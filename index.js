@@ -13,21 +13,21 @@ function addToDo(event) {
   event.preventDefault();
   //   todo DIV
   const todoDiv = document.createElement("div");
-  todoDiv.classList += "todo";
+  todoDiv.classList.add("todo");
   // create LI
   const newTodo = document.createElement("li");
   newTodo.innerText = todoInput.value;
-  newTodo.classList += "todo-item";
+  newTodo.classList.add("todo-item");
   todoDiv.appendChild(newTodo);
   // check mark button
   const completedButton = document.createElement("button");
   completedButton.innerHTML = '<i class="fas fa-check"></i>';
-  completedButton.classList += "complete-btn";
+  completedButton.classList.add("complete-btn");
   todoDiv.appendChild(completedButton);
   // trash button
   const trashButton = document.createElement("button");
   trashButton.innerHTML = '<i class="fas fa-trash"></i>';
-  trashButton.classList += "trash-btn";
+  trashButton.classList.add("trash-btn");
   todoDiv.appendChild(trashButton);
   // attach it to the ul
   todoList.appendChild(todoDiv);
@@ -41,7 +41,12 @@ function deleteCheck(event) {
   // DELETE the todo
   const item = event.target;
   if (item.classList[0] === "trash-btn") {
-    item.parentElement.remove();
+    const todo = item.parentElement;
+    //Animation
+    todo.classList.add("fall");
+    todo.addEventListener("transitionend", () => {
+      todo.remove();
+    });
   }
 
   if (item.classList[0] === "complete-btn") {
