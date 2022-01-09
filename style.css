@@ -12,8 +12,12 @@ body {
 }
 
 header h1 {
-  font-size: 1.5rem;
+  font-size: 4.5rem;
   font-weight: 700;
+}
+
+header {
+  margin-top: 1rem;
 }
 
 header,
@@ -22,6 +26,7 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 form input,
@@ -103,4 +108,63 @@ form button:hover {
 .fall {
   transform: translateY(8rem) rotateZ(20deg);
   opacity: 0;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  outline: none;
+  box-shadow: none;
+  border: none;
+}
+
+.select {
+  margin: 1rem;
+  position: relative;
+  overflow: hidden;
+}
+
+select {
+  color: #ff6f47;
+  width: 10rem;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 1rem;
+}
+
+.select::after {
+  content: "\25BC";
+  position: absolute;
+  background: #ff6f47;
+  top: 0;
+  right: 0;
+  padding: 1rem;
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+.select:hover::after {
+  background: #fff;
+  color: #ff6f47;
+}
+
+/* for mobile */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+  }
+
+  header,
+  form {
+    min-height: 12vh;
+  }
+
+  .todo-list {
+    flex: 1;
+  }
+  .todo-item {
+    font-size: 18px;
+  }
 }
